@@ -20,11 +20,16 @@ export {
   type SlackSearchResponse,
 } from './slackAdapter'
 
+// インポート（デフォルトインスタンス作成用）
+import { createDocbaseAdapter as createDocbase } from './docbaseAdapter'
+import { createSlackAdapter as createSlack } from './slackAdapter'
+import { createFetchHttpClient as createHttpClient } from './fetchHttpClient'
+
 // デフォルトインスタンス作成用のヘルパー関数
 export function createDefaultDocbaseAdapter() {
-  return createDocbaseAdapter(createFetchHttpClient())
+  return createDocbase(createHttpClient())
 }
 
 export function createDefaultSlackAdapter() {
-  return createSlackAdapter(createFetchHttpClient())
+  return createSlack(createHttpClient())
 }
